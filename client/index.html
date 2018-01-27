@@ -29,8 +29,13 @@
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
     </div>
+    <textarea id="messageText" rows="5" cols="40"></textarea>
     <button type="submit" id="send">Send a Message</button>
-    <div id="roomSelect"></div>
+    <button type="button" id="makeRoom">Make a Room</button>
+    <select id="roomSelect">
+      <option value="all">all</option>
+    </select>
+    <list id="friendsList"></list>
     <div id="chats"></div>
   </body>
   <script src="scripts/app.js"></script>
