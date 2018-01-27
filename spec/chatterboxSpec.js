@@ -45,6 +45,7 @@ describe('chatterbox', function() {
 
         app.send(message);
         ajaxOptions = typeof $.ajax.args[0][0] === 'object' ? $.ajax.args[0][0] : $.ajax.args[0][1];
+        // console.log($.ajax.args[0][0]);
         var result = ajaxOptions.data;
         // console.log(result, message)
         expect(result).to.deep.equal(message);
@@ -59,6 +60,7 @@ describe('chatterbox', function() {
       });
 
       it('should submit a GET request via $.ajax', function(done) {
+        
         app.fetch();
         expect($.ajax.calledOnce).to.be.true;
         ajaxUrl = typeof $.ajax.args[0][0] === 'string' ? $.ajax.args[0][0] : $.ajax.args[0][0].url;
@@ -119,7 +121,8 @@ describe('chatterbox', function() {
         $('#message').val('Why so many Mel Brooks quotes?');
 
         app.init();
-
+        console.log(app.buttonHandlerOn);
+        console.log(app.handleSubmit);
         $('#send .submit').trigger('submit');
         expect(app.handleSubmit.calledOnce).to.be.true;
 
