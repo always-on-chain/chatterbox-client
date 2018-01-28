@@ -38,8 +38,10 @@ var app = {
   },
 
   fetchEveryTen: function() {
-    app.fetch();
-    setTimeout(app.fetchEveryTen.bind(app), 10000);
+    this.fetch();
+    setTimeout(() => {
+      this.fetchEveryTen();
+    }, 10000);
   },
   
   clearMessages: function() {
@@ -66,6 +68,7 @@ var app = {
     response.results.forEach(function(message) {
       message.username = xssFilters.inHTMLData(message.username);
       message.text = xssFilters.inHTMLData(message.text);
+      message.roomname = xssFilters.inHTMLData(message.roomname);
       app.renderMessage(message);
       app.storage.push(message);
     });
